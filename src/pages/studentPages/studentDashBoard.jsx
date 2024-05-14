@@ -23,9 +23,10 @@ import StudentViewTeachers from "../../components/studentComponents/studentViewT
 
 
 const SideBars = styled(Sidebar)`
-    .ps-sidebar-container {
-        background: transparent;
-    }
+.ps-sidebar-container {
+    background-image: url('https://images.unsplash.com/photo-1554755229-ca4470e07232?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover; 
+    background-repeat: no-repeat; 
 `;
 
 const StudentDashBoard = () => {
@@ -53,49 +54,64 @@ const StudentDashBoard = () => {
                             {" "}
                             <h2>Student</h2>
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentProfile/>)}>
+                        <MenuItem onClick={() => setChildren(<StudentProfile/>)}
+                        style={{ backgroundColor: children.type === StudentProfile ? "#FFFFFF" : "" }} >
                             Profile
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentAssignment/>)}>
+                        <MenuItem onClick={() => setChildren(<StudentAssignment/>)}
+                        style={{ backgroundColor: children.type === StudentAssignment ? "#FFFFFF" : "" }} >
                    Assignment
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentAttendance/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentAttendance/>)} 
+                        style={{ backgroundColor: children.type === StudentAttendance ? "#FFFFFF" : "" }} >
                        Attendance
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentCalender/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentCalender/>)}
+                        style={{ backgroundColor: children.type === StudentCalender ? "#FFFFFF" : "" }}  >
                        Calender
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentDailyReports/>)}>
+                        <MenuItem onClick={() => setChildren(<StudentDailyReports/>)}
+                        style={{ backgroundColor: children.type === StudentDailyReports ? "#FFFFFF" : "" }} >
                     Daily Reports
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentExamTimetable/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentExamTimetable/>)} 
+                        style={{ backgroundColor: children.type === StudentExamTimetable ? "#FFFFFF" : "" }} >
                         ExamTimetable
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentHomework/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentHomework/>)}
+                        style={{ backgroundColor: children.type === StudentHomework ? "#FFFFFF" : "" }}  >
                     Homework
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentLeaveReport/>)}>
+                        <MenuItem onClick={() => setChildren(<StudentLeaveReport/>)}
+                        style={{ backgroundColor: children.type === StudentLeaveReport ? "#FFFFFF" : "" }} >
                  Leave Report
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentLibrary/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentLibrary/>)}
+                        style={{ backgroundColor: children.type === StudentLibrary ? "#FFFFFF" : "" }}  >
                        Library
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentMarkCard/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentMarkCard/>)}
+                        style={{ backgroundColor: children.type === StudentMarkCard ? "#FFFFFF" : "" }}  >
                       MarkCard
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentNotice/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentNotice/>)}
+                        style={{ backgroundColor: children.type === StudentNotice ? "#FFFFFF" : "" }}  >
                       Notice
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentPayment/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentPayment/>)}
+                        style={{ backgroundColor: children.type === StudentPayment ? "#FFFFFF" : "" }}  >
                       Payment
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentReturnBooks/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentReturnBooks/>)} 
+                        style={{ backgroundColor: children.type === StudentReturnBooks ? "#FFFFFF" : "" }} >
                     View Books
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentSeminar/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentSeminar/>)}
+                        style={{ backgroundColor: children.type === StudentSeminar ? "#FFFFFF" : "" }}  >
                    Seminar
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<StudentViewTeachers/>)} >
+                        <MenuItem onClick={() => setChildren(<StudentViewTeachers/>)} 
+                        style={{ backgroundColor: children.type === StudentViewTeachers ? "#FFFFFF" : "" }} >
                        ViewTeachers
                         </MenuItem>
                         <MenuItem onClick={handleLogOut}>

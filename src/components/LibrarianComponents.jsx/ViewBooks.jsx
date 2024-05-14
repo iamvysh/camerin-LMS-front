@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../utils/axiosInstance';
-import { Box, Typography, Card, CardContent, CardActions, Button } from '@mui/material';
+import { Box, Typography, Card, CardContent, CardActions, Button,Grid } from '@mui/material';
 
 const ViewBooks = () => {
     const [books, setBooks] = useState([]);
@@ -24,28 +24,29 @@ const ViewBooks = () => {
             <Typography variant="h4" gutterBottom>
                 Book List
             </Typography>
-            {books?.map((book) => (
-                <Card key={book.id} sx={{ minWidth: 275, marginBottom: 2 }}>
-                    <CardContent sx={{padding:'20px'}}>
-                        <Typography variant="h5" component="div">
-                            {book?.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Available Copies: {book?.availiableCopies}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Category: {book?.category}
-                        </Typography>
-                        
-                    </CardContent>
-                    <CardActions>
-                        {/* Add actions like edit and delete buttons if needed */}
-                        {/* <Button size="small">Edit</Button>
-                        <Button size="small">Delete</Button> */}
-                    </CardActions>
-                </Card>
-            ))}
-        </Box>
+            <Grid container spacing={2}>
+                {books.map((book) => (
+                    <Grid item key={book?.id} xs={12} sm={6} md={4} lg={3}>
+                        <Card sx={{ minWidth: 275, marginBottom: 10,marginLeft:15 }}>
+                            <CardContent sx={{ padding: '20px', }}>
+                                <Typography variant="h5" component="div">
+                                    {book?.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Available Copies: {book?.availiableCopies}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Category: {book?.category}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                            
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+            </Box>
     );
 };
 

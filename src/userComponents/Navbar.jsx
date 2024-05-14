@@ -96,7 +96,7 @@ export default function Navbar() {
                   Logout
                 </Box>
               ) : (
-                <Box onClick={() => nav("/signup")}>
+                <Box onClick={() => nav("/login")}>
                   Login&nbsp;/&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Box>
               )}

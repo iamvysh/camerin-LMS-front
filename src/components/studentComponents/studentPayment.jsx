@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../utils/axiosInstance';
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button } from '@mui/material';
+import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button,  Modal, Box,Typography,} from '@mui/material';
 
 const StudentPayment = () => {
   const [paymentList, setPaymentList] = useState([]);
   const [selectedPayment,setSelectedPayment] = useState()
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = (id) => {
+    const paymentData = paymentList.find(payment => payment._id === id);
+    setSelectedPayment(paymentData);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
 
    console.log('selec',paymentList)
    
@@ -46,7 +59,8 @@ const StudentPayment = () => {
           });
           console.log(data);
           if (data) {
-          
+            fetchPayments()
+            handleClose()
           }
         } catch (error) {
           console.log(error);
@@ -60,12 +74,10 @@ const StudentPayment = () => {
     rzp1.open();
   };
 
-  const handlePayment = async (paymentId) => {
+  const handlePayment = async () => {
     try {
-      const paymentData = paymentList.find(payment => payment._id === paymentId);
-      if (paymentData) {
-        setSelectedPayment(paymentData);
-        
+    
+    
      
         const { data } = await axios.post(`/student/payment`, {
           amount: selectedPayment.amount
@@ -74,38 +86,102 @@ const StudentPayment = () => {
         initPayment(data.data);
   
         console.log('Processing payment for ID:', paymentId);
-      }
+    
     } catch (error) {
       console.error('Error processing payment:', error);
     }
   };
   
   return (
+    <>
     <TableContainer component={Paper}>
-      <Table>
+    <Table>
         <TableHead>
-          <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Amount</TableCell>
-            <TableCell>Due Date</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
+            <TableRow>
+                <TableCell>Title</TableCell>
+                <TableCell>Amount</TableCell>
+                <TableCell>Due Date</TableCell>
+                <TableCell>Action</TableCell>
+            </TableRow>
         </TableHead>
         <TableBody>
-          {paymentList?.map((payment) => (
-            <TableRow key={payment?.id}>
-              <TableCell>{payment?.title}</TableCell>
-              <TableCell>{payment?.amount}</TableCell>
-              <TableCell>{payment?.DueDate}</TableCell>
-              <TableCell>
-             
-                <Button variant="contained" color="primary" onClick={() => handlePayment(payment?._id)}>Pay</Button>
-              </TableCell>
-            </TableRow>
-          ))}
+            {paymentList?.map((payment) => {
+        
+                const isStudentIncluded = payment?.students?.find(student => student.student === localStorage.getItem("studentId"));
+  
+                const isPayable = isStudentIncluded.isPayed === false ;
+
+                return (
+                    <TableRow key={payment?._id}>
+                        <TableCell>{payment?.title}</TableCell>
+                        <TableCell>{payment?.amount}</TableCell>
+                        <TableCell>{payment?.DueDate}</TableCell>
+                        <TableCell>
+                            {isPayable ? (
+                                <Button variant="contained" color="primary"
+                            
+                                 onClick={() => handleOpen(payment?._id)}
+                                
+                                >Pay</Button>
+                            ) : (
+                                <Button disabled variant="contained" color="secondary">Paid</Button>
+                            )}
+                        </TableCell>
+                    </TableRow>
+                );
+            })}
         </TableBody>
-      </Table>
-    </TableContainer>
+    </Table>
+</TableContainer>
+<Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      width: 400,
+                      bgcolor: "background.paper",
+                      boxShadow: 24,
+                      p: 4,
+                      borderRadius: "20px",
+                    }}
+                  >
+                    <Typography
+                      id="modal-modal-description"
+                      variant="h5"
+                      sx={{ color: "black", textAlign: "center" }}
+                    >
+                      Proceed with Payment
+                    </Typography>
+                    <span
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        justifyContent: "space-around",
+                      }}
+                    >
+                      <Button
+                        onClick={() => handlePayment()} 
+                        sx={{ mt: 2, color: "green" }}
+                      >
+                        Yes
+                      </Button>
+                      <Button
+                        onClick={handleClose}
+                        sx={{ mt: 2, color: "red" }}
+                      >
+                        No
+                      </Button>
+                    </span>
+                  </Box>
+                </Modal>
+</>
   );
 };
 
