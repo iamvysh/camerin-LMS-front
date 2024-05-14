@@ -17,9 +17,11 @@ import UnreturnedBooks from "../../components/LibrarianComponents.jsx/Unreturned
 
 
 const SideBars = styled(Sidebar)`
-    .ps-sidebar-container {
-        background: transparent;
-    }
+.ps-sidebar-container {
+    background-image: url('https://images.unsplash.com/photo-1554755229-ca4470e07232?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
 `;
 
 const StudentDashBoard = () => {
@@ -45,25 +47,32 @@ const StudentDashBoard = () => {
                         {/* <MenuItem onClick={() => setChildren(<StudentProfile />)}>
                             Profile
                         </MenuItem> */}
-                        <MenuItem onClick={() => setChildren(<AddBooks />)}>
+                        <MenuItem onClick={() => setChildren(<AddBooks />)}
+                        style={{ backgroundColor: children.type === AddBooks ? "#FFFFFF" : "" }}>
                             Add Books
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<ViewBooks />)} >
+                        <MenuItem onClick={() => setChildren(<ViewBooks />)}
+                         style={{ backgroundColor: children.type === ViewBooks ? "#FFFFFF" : "" }} >
                             View Books
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<AprovedTransactions />)} >
+                        <MenuItem onClick={() => setChildren(<AprovedTransactions />)} 
+                         style={{ backgroundColor: children.type === AprovedTransactions ? "#FFFFFF" : "" }}>
                             Approved Transactions
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<UnapprovedTransactions />)}>
+                        <MenuItem onClick={() => setChildren(<UnapprovedTransactions />)}
+                         style={{ backgroundColor: children.type === UnapprovedTransactions ? "#FFFFFF" : "" }}>
                             Unapproved Transactins
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<RentalDeadline />)} >
+                        <MenuItem onClick={() => setChildren(<RentalDeadline />)} 
+                         style={{ backgroundColor: children.type === RentalDeadline ? "#FFFFFF" : "" }}>
                             Rental Deadline
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<UnreturnedBooks />)} >
+                        <MenuItem onClick={() => setChildren(<UnreturnedBooks />)}
+                         style={{ backgroundColor: children.type === UnreturnedBooks ? "#FFFFFF" : "" }} >
                             UnReturned Books
                         </MenuItem>
-                        <MenuItem onClick={() => setChildren(<OverDueTransactions />)} >
+                        <MenuItem onClick={() => setChildren(<OverDueTransactions />)}
+                         style={{ backgroundColor: children.type === OverDueTransactions ? "#FFFFFF" : "" }} >
                             Overdue
                         </MenuItem>
                         <MenuItem onClick={() => nav("/")}>

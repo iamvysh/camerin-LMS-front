@@ -21,6 +21,7 @@ const AssignmentCard = styled(Card)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+
 }));
 
 const AssignmentTitle = styled(Typography)(({ theme }) => ({
@@ -36,6 +37,8 @@ const Dates = styled(Typography)(({ theme }) => ({
     fontSize: "15px",
     fontWeight: 600,
 }));
+
+const backgroundColors = ['#FFF59D', '#FFF176', '#FFEB3B', '#FFD600'];
 
 const style = {
     position: "absolute",
@@ -130,9 +133,9 @@ export default function StudentAssignment() {
             <MainTitle>Assignments</MainTitle>
             <SubContainer>
                 <GridContainer container spacing={2}>
-                    {assignments?.map((assignment) => (
+                    {assignments?.map((assignment,index) => (
                         <GridItem item xs={12} sm={6} md={4} lg={3}>
-                            <AssignmentCard>
+                            <AssignmentCard sx={{backgroundColor: backgroundColors[index % backgroundColors.length]}}>
                                 <AssignmentTitle>{assignment?.title}</AssignmentTitle>
                                 <AssignmentDesc>
                                     {assignment?.description}

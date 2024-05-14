@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "../../../utils/axiosInstance";
 import { Box, Typography, Radio, RadioGroup, FormControlLabel, FormControl, Grid, TextField, Button } from '@mui/material';
+import toast, { Toaster } from "react-hot-toast";
 
 const Attendance = () => {
    const [students, setStudents] = useState([]);
@@ -42,8 +43,23 @@ const Attendance = () => {
          const response = await axios.post(`/addattentence/${id}`, { attentence, Date: date });
          console.log(response.data);
          console.log("date",date);
+         toast.success("Attentence addeed Successfully", {
+            duration: 5000,
+            style: {
+              borderRadius: "10px",
+              color: "#000",
+            },
+          });
       } catch (error) {
          console.error('Error submitting attendance:', error);
+         toast.error(error.response.data.message, {
+            duration: 3000,
+            style: {
+              borderRadius: "10px",
+              background: "#e24242",
+              color: "#fff",
+            },
+          });
       }
    };
 
@@ -90,6 +106,8 @@ const Attendance = () => {
             ))}
          </Box>
          <Button variant="contained" color="primary" onClick={handleSubmit}>Submit Attendance</Button>
+         <Toaster />
+
       </Box>
    );
 };

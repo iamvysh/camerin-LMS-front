@@ -2,36 +2,44 @@ import React, { useEffect, useState } from "react";
 import axios from '../../../utils/axiosInstance'
 
 import { Box, Card, Grid, Typography, styled, Button } from "@mui/material";
-const MainContainer = styled(Box)(({ theme }) => ({}));
+const MainContainer = styled(Box)(({ theme }) => ({
+    marginTop: "20px"
+}));
 const MainTitle = styled(Typography)(({ theme }) => ({
     fontSize: "24px",
     fontWeight: 700,
+    textAlign: "center",
+    marginBottom:' 20px'
 }));
-const SubContainer = styled(Box)(({ theme }) => ({}));
+const SubContainer = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'center'
+}));
 
 const GridContainer = styled(Grid)(({ theme }) => ({
     width: "100%",
 }));
 const GridItem = styled(Grid)(({ theme }) => ({}));
 const LeaveCard = styled(Card)(({ theme }) => ({
-    width: "100%",
+    minWidth: "70vh",
     minHeight: "25rem",
     marginTop: "2rem",
-    padding: "1rem",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10rem",
-    border: "1px solid black"
+    width: "100%",
+    borderRadius: "8px",
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#FFFFFF',
+    padding: '20px',
+
 }));
 
 const CardTitle = styled(Typography)(({ theme }) => ({
-    fontSize: "24px",
-    fontWeight: 700,
+    fontWeight: "bold",
+    marginBottom: '10px',
 }));
 const CardDec = styled(Typography)(({ theme }) => ({
     fontSize: "16px",
     lineHeight: "2rem",
-
+    color: "#555555"
 }));
 
 export default function StudentNotice() {
@@ -57,25 +65,23 @@ export default function StudentNotice() {
     return (
         <MainContainer>
             <MainTitle>
-                <MainTitle>Notice</MainTitle>
+                <Typography variant="h4">Notice</Typography>
             </MainTitle>
             <SubContainer>
-                <GridContainer container spacing={2}>
-                    <GridItem item xs={12} md={6}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
                         <LeaveCard>
                             {notices?.map((data, index) => (
-                                <div key={index} style={{border:'1px solid black',padding:"10%"}}>
-                                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                        <CardTitle variant="h6">{data?.title}</CardTitle>
-                                        <Typography variant="body1">{data?.Date}</Typography>
-                                    </Box>
+                                <div key={index} style={{ borderBottom: '1px solid #CCCCCC', marginBottom: '20px', paddingBottom: '20px' }}>
+                                    <CardTitle variant="h6">{data?.title}</CardTitle>
+                                    <Typography variant="body2" color="textSecondary">{data?.Date}</Typography>
                                     <CardDec variant="body2">{data?.description}</CardDec>
-
+                                    
                                 </div>
                             ))}
                         </LeaveCard>
-                    </GridItem>
-                </GridContainer>
+                    </Grid>
+                </Grid>
             </SubContainer>
         </MainContainer>
     );
