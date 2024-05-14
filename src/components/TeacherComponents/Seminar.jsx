@@ -38,7 +38,7 @@ const Seminar = () => {
             const response = await axios.post(`/addseminar/${teacherId}`, {
                 title,
                 description,
-                deadline
+                deadLine
             });
             console.log('Seminar created:', response.data);
             setTitle('');

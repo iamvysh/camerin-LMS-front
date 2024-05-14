@@ -17,6 +17,8 @@ import Calender from "../../components/TeacherComponents/Calender";
 import DailyReport from "../../components/TeacherComponents/DailyReport";
 import Attendance from "../../components/TeacherComponents/Attendance";
 import AttendenceRegister from "../../components/TeacherComponents/AttendenceRegister";
+import MedicalCertificates from "../../components/TeacherComponents/MedicalCertificates";
+import Exam from "../../components/TeacherComponents/Exam";
 
 
 
@@ -75,6 +77,10 @@ const TeacherDashBoard = () => {
                           style={{ backgroundColor: children.type === Calender ? "#FFFFFF" : "" }}>
                             Calender
                         </MenuItem>
+                        <MenuItem onClick={() => setChildren(<MedicalCertificates/>)}
+                         style={{ backgroundColor: children.type === MedicalCertificates ? "#FFFFFF" : "" }} >
+                            Medical Certificates
+                        </MenuItem>
                         <MenuItem onClick={() => setChildren(<LeaveReport/>)}
                          style={{ backgroundColor: children.type === LeaveReport ? "#FFFFFF" : "" }} >
                             Leave Report
@@ -103,9 +109,9 @@ const TeacherDashBoard = () => {
                          style={{ backgroundColor: children.type === MarkCard ? "#FFFFFF" : "" }}>
                         Mark Card
                         </MenuItem>
-                        {/* <MenuItem onClick={() => setChildren(<Exam/>)} >
+                        <MenuItem onClick={() => setChildren(<Exam/>)} >
                             Exam
-                        </MenuItem> */}
+                        </MenuItem>
                         <MenuItem onClick={() => setChildren(<ExamTimetable/>)}
                         style={{ backgroundColor: children.type === ExamTimetable ? "#FFFFFF" : "" }} >
                             Time Table
