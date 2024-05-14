@@ -57,7 +57,7 @@ export default function StudentSeminar() {
     const handleClose = () => setOpen(false);
     const [seminars, setSeminars] = useState([]);
 
-    console.log('first',file)
+    console.log('first',seminars)
 
     useEffect(() => {
         const fetchData = async () => {

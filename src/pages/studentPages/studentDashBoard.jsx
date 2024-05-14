@@ -18,6 +18,8 @@ import StudentPayment from "../../components/studentComponents/studentPayment";
 import StudentReturnBooks from "../../components/studentComponents/studentViewBooks";
 import StudentSeminar from "../../components/studentComponents/studentSeminar";
 import StudentViewTeachers from "../../components/studentComponents/studentViewTeachers";
+import StudentMedicalCertificate from "../../components/studentComponents/studentMedicalCertificate";
+import StudentExam from "../../components/studentComponents/studentExam";
  
 
 
@@ -86,6 +88,10 @@ const StudentDashBoard = () => {
                         style={{ backgroundColor: children.type === StudentLeaveReport ? "#FFFFFF" : "" }} >
                  Leave Report
                         </MenuItem>
+                        <MenuItem onClick={() => setChildren(<StudentMedicalCertificate/>)}
+                        style={{ backgroundColor: children.type === StudentMedicalCertificate ? "#FFFFFF" : "" }} >
+                 Medical Certificates
+                        </MenuItem>
                         <MenuItem onClick={() => setChildren(<StudentLibrary/>)}
                         style={{ backgroundColor: children.type === StudentLibrary ? "#FFFFFF" : "" }}  >
                        Library
@@ -109,6 +115,10 @@ const StudentDashBoard = () => {
                         <MenuItem onClick={() => setChildren(<StudentSeminar/>)}
                         style={{ backgroundColor: children.type === StudentSeminar ? "#FFFFFF" : "" }}  >
                    Seminar
+                        </MenuItem>
+                        <MenuItem onClick={() => setChildren(<StudentExam/>)}
+                        style={{ backgroundColor: children.type === StudentExam ? "#FFFFFF" : "" }}  >
+                   Exam
                         </MenuItem>
                         <MenuItem onClick={() => setChildren(<StudentViewTeachers/>)} 
                         style={{ backgroundColor: children.type === StudentViewTeachers ? "#FFFFFF" : "" }} >
