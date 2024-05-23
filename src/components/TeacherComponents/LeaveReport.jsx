@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../utils/axiosInstance";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Box, Card, Grid, Typography, styled } from "@mui/material";
 
@@ -50,9 +51,18 @@ const LeaveReport = () => {
 
     const approveRequest = async(id) => {
 
-    const response = await axios.put(`approverequest/${id}`)
+    const response = await axios.put(`/approverequest/${id}`)
 
     console.log('response',response)
+    fetchLeaveReports();
+
+    toast.success("Leave approved Successfully", {
+        duration: 5000,
+        style: {
+          borderRadius: "10px",
+          color: "#000",
+        },
+      });
     }
 
     useEffect(() => {
@@ -109,6 +119,8 @@ const LeaveReport = () => {
                     ))}
                 </GridContainer>
             </SubContainer>
+            <Toaster />
+
         </MainContainer>
     );
 };

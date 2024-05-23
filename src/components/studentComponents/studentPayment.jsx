@@ -109,7 +109,7 @@ const StudentPayment = () => {
         
                 const isStudentIncluded = payment?.students?.find(student => student.student === localStorage.getItem("studentId"));
   
-                const isPayable = isStudentIncluded.isPayed === false ;
+                const isPayable = isStudentIncluded?.isPayed === false ;
 
                 return (
                     <TableRow key={payment?._id}>
