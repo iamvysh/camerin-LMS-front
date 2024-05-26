@@ -18,6 +18,8 @@ const StudentMedicalCertificate = () => {
 
    console.log('cer',certificates)
 
+   const today = new Date().toISOString().split('T')[0];
+
   const handleImageChange = (event) => {
     setImages(event.target.files[0]);
   };
@@ -118,6 +120,10 @@ try{
           margin="normal"
           InputLabelProps={{
             shrink: true,
+          }}
+          inputProps={{
+            min: today,
+            max: today,
           }}
         />
         <input

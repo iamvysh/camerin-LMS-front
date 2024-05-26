@@ -38,6 +38,8 @@ const StudentLeaveReport = () => {
 
     const [Leavelist, setLeavelist] = useState();
 
+    const today = new Date().toISOString().split('T')[0];
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -72,7 +74,7 @@ const StudentLeaveReport = () => {
                   color: "#fff",
                 },
               });
-            // Handle error
+            
         }
     };
 
@@ -118,6 +120,10 @@ const StudentLeaveReport = () => {
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        inputProps={{
+                            min: today,
+                            max: today,
+                          }}
                     />
                     <TextField
                     required

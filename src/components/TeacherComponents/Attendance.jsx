@@ -12,6 +12,8 @@ const Attendance = () => {
 
    const id = localStorage.getItem("teacherId");
 
+   const today = new Date().toISOString().split('T')[0];
+
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -81,6 +83,11 @@ const Attendance = () => {
             InputLabelProps={{
                shrink: true,
             }}
+            inputProps={{
+               min: today,
+               max: today,
+             }}
+             
          />
          <Box marginTop={3}>
             {students.map(student => (
