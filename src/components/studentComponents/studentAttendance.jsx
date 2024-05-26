@@ -12,6 +12,7 @@ export default function StudentAttendance() {
   const [toDate, setToDate] = useState('');
   const [data,setData]=useState([])
 
+
   const id=localStorage.getItem("studentId")
  console.log("studentId",id);
   const Data={

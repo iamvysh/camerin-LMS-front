@@ -9,6 +9,7 @@ import LibrarianDashboard from "./pages/librarianPages.jsx/LibrarianDashboard"
 import ViewAssignment from "./pages/teachersPages/ViewAssignment";
 import ViewSeminar from "./pages/teachersPages/ViewSeminar";
 import AddMarkCard from "./pages/teachersPages/AddMark";
+import UploadExamPage from "./pages/studentPages/uploadExamPage";
 
 
 
@@ -28,7 +29,7 @@ function App() {
         <Route path="/assignment/:id" element={<ViewAssignment/>} />
         <Route path="/seminar/:id" element={<ViewSeminar/>} />
         <Route path="/addmark/:id" element={<AddMarkCard/>} />
-        {/* <Route path="/viewmark"  */}
+        <Route path="/uploadexam/:id" element={<UploadExamPage/>} /> 
     </Routes>
 </div>
   )
